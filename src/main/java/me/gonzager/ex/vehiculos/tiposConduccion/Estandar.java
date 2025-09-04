@@ -7,13 +7,13 @@ public class Estandar implements TipoConduccion{
     public Estandar(){}
 
     @Override
-    public Double consumo() {
-        return 10.0;
+    public Integer consumo() {
+        return 10;
     }
 
     @Override
-    public Double velocidadMaxima() {
-        return 150.0;
+    public Integer velocidadMaxima() {
+        return 150;
     }
 
     @Override

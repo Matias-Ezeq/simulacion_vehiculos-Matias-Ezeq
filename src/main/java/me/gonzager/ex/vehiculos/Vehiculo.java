@@ -4,21 +4,24 @@ import me.gonzager.ex.vehiculos.tiposConduccion.Ecologica;
 import me.gonzager.ex.vehiculos.tiposConduccion.TipoConduccion;
 
 public class Vehiculo {
-    private Double combustible;
-    private Double kilometraje = 0.0;
+    private Integer combustible;
+    private Integer kilometraje = 0;
     private TipoConduccion tipoConduccion = Ecologica.getInstance();
-    private final Double consumo = tipoConduccion.consumo();
-    private final Double velocidadMaxima = tipoConduccion.velocidadMaxima();
+    private final Integer consumo = tipoConduccion.consumo();
+    private final Integer velocidadMaxima = tipoConduccion.velocidadMaxima();
     
-    public Vehiculo(Double combustible) {
+    public Vehiculo(Integer combustible) {
+        if (combustible < 0) {
+            throw new RuntimeException("la cantidad de combustible no puede ser negativa");
+        }
         this.combustible = combustible;
     }
 
-    public Double getCombustible() {
+    public Integer getCombustible() {
         return combustible;
     }
 
-    public Double getKilometraje() {
+    public Integer getKilometraje() {
         return kilometraje;
     }
 
@@ -26,15 +29,15 @@ public class Vehiculo {
         return tipoConduccion;
     }
 
-    public void cargarCombustible(Double litros) {
+    public void cargarCombustible(Integer litros) {
         combustible = combustible + litros;
     }
 
-    public Double getConsumo() {
+    public Integer getConsumo() {
         return consumo;
     }
 
-    public Double getVelocidadMaxima() {
+    public Integer getVelocidadMaxima() {
         return velocidadMaxima;
     }
 
@@ -46,8 +49,8 @@ public class Vehiculo {
         tipoConduccion = tipoConduccion.anterior();
     }
 
-    public void avanzar(Double kilometros) {
-        Double distanciaMaximaPosible = combustible / consumo;
+    public void avanzar(Integer kilometros) {
+        Integer distanciaMaximaPosible = combustible / consumo;
         if (kilometros > distanciaMaximaPosible) {
             avanzar(distanciaMaximaPosible); //recorre hasta donde de la nafta
             throw new RuntimeException("Combustible insuficiente, solo pude recorrer " + distanciaMaximaPosible + " del total de " + kilometros + " kilometros");

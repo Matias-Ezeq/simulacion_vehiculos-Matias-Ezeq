@@ -7,13 +7,13 @@ public class Deportiva implements TipoConduccion{
     public Deportiva(){}
 
     @Override
-    public Double consumo() {
-        return 10.0;
+    public Integer consumo() {
+        return 5;
     }
 
     @Override
-    public Double velocidadMaxima() {
-        return 150.0;
+    public Integer velocidadMaxima() {
+        return 200;
     }
 
     @Override

@@ -7,13 +7,13 @@ public class Ecologica implements TipoConduccion{
     public Ecologica(){}
 
     @Override
-    public Double consumo() {
-        return 16.0;
+    public Integer consumo() {
+        return 16;
     }
 
     @Override
-    public Double velocidadMaxima() {
-        return 120.0;
+    public Integer velocidadMaxima() {
+        return 120;
     }
 
     @Override
